@@ -1,0 +1,34 @@
+.main-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    // transform: translate(-50%, 50%);
+}
+
+.forgot-text {
+    text-align: right;
+    margin-top: -16px;
+    margin-bottom: 10px;
+    font-size: x-small;
+    z-index: 300;
+}
+.signup-btn {
+    margin: 20px 0px;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mat-form-width {
+    width: 100%;
+}
