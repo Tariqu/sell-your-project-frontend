@@ -1,0 +1,18 @@
+<div class="main-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-card class="main-card">
+            <h1>Login</h1>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="email@example.com" formControlName="email" required />
+            <mat-error *ngIf="this.loginForm.get('email')?.invalid">Invalid Email</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="test@!#$12" formControlName="password" type="password" required />
+            <mat-error *ngIf="this.loginForm.get('password')?.invalid">password length must be between [6-20]</mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" [disabled]="this.loginForm.invalid">Login</button>
+    </mat-card>
+  </form>
+</div>

@@ -1,0 +1,13 @@
+.main-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-card {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    
+    // transform: translate(-50%, 50%);
+}
