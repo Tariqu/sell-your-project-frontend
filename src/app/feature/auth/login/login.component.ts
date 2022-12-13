@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
             horizontalPosition: 'center',
           });
           localStorage.setItem('token', val.token);
+          this._router.navigate(['']);
         },
         error: (val: any) => {
           this._snackBar.open(val.error.message, 'ok', { duration: 1000 });
