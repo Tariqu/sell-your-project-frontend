@@ -3,16 +3,93 @@
     <span class="example-spacer"></span>
     <button mat-raised-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
         type="button" (click)="openDailog()">
-        ADD USER
+        ADD PRODUCT
     </button>
 </mat-toolbar>
 
-<mat-form-field appearance="fill">
-    <mat-label>Choose a date</mat-label>
-    <!-- #docregion toggle -->
-    <input matInput [matDatepicker]="picker">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-    <!-- #enddocregion toggle -->
-</mat-form-field>
+<!-- mat table -->
+<div class="container">
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="thumbnail">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Thumbnail </th>
+                <td mat-cell *matCellDef="let row"> {{row.thumbnail}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+                <td mat-cell *matCellDef="let row"> {{row.title}} </td>
+            </ng-container>
+
+
+
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                <td mat-cell *matCellDef="let row"> {{row.price}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="shortDescription">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Short Description </th>
+                <td mat-cell *matCellDef="let row"> {{row.shortDescription | trim:10}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Short Description </th>
+                <td mat-cell *matCellDef="let row"> {{row.shortDescription | trim: 10}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="productUrl">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Slug </th>
+                <td mat-cell *matCellDef="let row"> {{row.productUrl}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="category">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                <td mat-cell *matCellDef="let row"> {{row.category}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tags">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tags </th>
+                <td mat-cell *matCellDef="let row"> {{row.tags}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                <td mat-cell *matCellDef="let row">
+                    <button mat-icon-button color="primary" (click)="onUpdate(row)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="onDelete(row.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of products"></mat-paginator>
+    </div>
+</div>

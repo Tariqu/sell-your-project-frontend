@@ -1,24 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 
 import { ProductRoutingModule } from './product-routing.module';
-import { DetailComponent } from './detail/detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { EmployeeDailogComponent } from './employee-dailog/employee-dailog.component';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { MatNativeDateModule } from '@angular/material/core';
+import { ProductDailogComponent } from './product-dailog/product-dailog.component';
+import { TrimPipe } from 'src/app/shared/pipes/trim.pipe';
 
 @NgModule({
-  declarations: [DetailComponent, DashboardComponent, EmployeeDailogComponent],
+  declarations: [DashboardComponent, ProductDailogComponent, TrimPipe],
   imports: [
     CommonModule,
     ProductRoutingModule,
@@ -29,9 +34,15 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatDividerModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule,
   ],
 })
 export class ProductModule {}
