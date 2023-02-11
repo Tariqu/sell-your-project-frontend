@@ -1,10 +1,6 @@
-import { Component, OnInit, inject, Inject } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import {
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-  MatDialog,
-} from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductService } from '../services/product.service';
 import { IProduct } from './product.model';

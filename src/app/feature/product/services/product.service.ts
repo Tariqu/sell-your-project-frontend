@@ -13,16 +13,6 @@ export class ProductService {
 
   constructor(private _http: HttpClient) {}
 
-  getDetail() {
-    return this._http
-      .get(`${this.baseUrl}/users/me`, {
-        headers: {
-          Authorization: this.token,
-        },
-      })
-      .pipe(map((res: any) => res.data));
-  }
-
   addProduct(data: IProduct): Observable<IProduct> {
     return this._http
       .post<IProduct>(`${this.baseUrl}/products`, data)
